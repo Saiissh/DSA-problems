@@ -1,0 +1,20 @@
+if(head==null)return head;
+
+        //take slow pointer  which goes one node at a time
+        //take fast pointer  which goes two node at a time
+        
+        ListNode fp=head;
+        ListNode sp=head;
+
+        while(true)
+        {
+            //jab fast pointer end la pochel...bydefaul maza slow pointer mid la asnar... 
+            if(fp==null || fp.next==null)
+ 
+            return sp;
+
+            sp=sp.next;
+            fp=fp.next.next;
+
+        }
+      
