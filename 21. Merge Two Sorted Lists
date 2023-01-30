@@ -1,0 +1,37 @@
+     ListNode list=new ListNode(0);
+    //create new Node in which desired ans will be stored
+
+    ListNode ans=list;
+    //this node simply helps us to keep address of newly created node in which we store ans
+          
+          //use while loop in order to compare the datas of starting elements of both list;
+           while(list1!=null && list2!=null)
+           {
+               if(list1.val<list2.val)
+               {
+                   list.next=list1;
+                   list1=list1.next;
+                   //make sure u forward the list element which is already checked
+               }
+               else
+               {
+                   list.next=list2;
+                   list2=list2.next;
+               }
+               list=list.next;
+           }
+
+           //khali apan remaining list add kr skte hai...eik eik add krna is not necessary
+           //bcuz bydefault sabb to linked hi hota hai na...to eik saaat sabb link hojaega
+           if(list1!=null)
+           {
+               list.next=list1;
+           }
+
+           if(list2!=null)
+           {
+               list.next=list2;
+           }
+
+//initially ans mai null store kiya tha..issi karan uss ans ka next mai elements store honge..thus return uss ans Node ka next
+           return ans.next;
