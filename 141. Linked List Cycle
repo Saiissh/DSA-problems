@@ -1,0 +1,20 @@
+  if(head==null)return false;
+       //if initial node is null..return false..(edge case)
+	   
+        ListNode i=head;        //take slow pointer  which goes one node at a time
+        ListNode j=head;        //take fast pointer  which goes two node at a time
+
+        while(true)
+        {
+            i=i.next;           // Node traversal  
+			
+            if(j.next==null || j.next.next==null)
+            break;
+                               //if fast pointer reaches null...i.e link is not present
+
+            j=j.next.next;    // Node traversal
+			
+            if(j==i)
+            return true;       //if slow and fast pointer meets at a node...i.e link present
+        }
+        return false;
