@@ -1,4 +1,6 @@
-if(head==null)return head;
+        //we can do the same by first finding out size of list and then returning size/2 element
+        
+        if(head==null)return head;
 
         //take slow pointer  which goes one node at a time
         //take fast pointer  which goes two node at a time
