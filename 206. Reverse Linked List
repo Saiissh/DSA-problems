@@ -1,0 +1,18 @@
+        ListNode prev=null;
+        ListNode curr=head;
+
+        while(curr!=null)
+        {
+            //find next of current
+            ListNode nextNode=curr.next;
+
+            //point this current's next to previous
+            //like if LL is 1->2->3 ..after first pass it becomes null <-1  2->3
+            curr.next=prev;
+
+            // now prev(null) becomes curr(1)..thus then only 2(curr) will point towards prev(1); 
+            //shift prev n curr forward
+            prev=curr;
+            curr=nextNode;
+        }
+        return prev;
