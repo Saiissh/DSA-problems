@@ -1,0 +1,8 @@
+        //store value of next node into it
+         node.val=node.next.val;
+         
+        //  uss node ke baad ke baad wla node nikalo (next forward node)
+         ListNode nextNode=node.next.next;
+
+        //uss node ko next forward node se link krdo
+         node.next=nextNode;
