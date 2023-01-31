@@ -1,0 +1,54 @@
+  /*
+        approach
+        find out sizes of LL and cal difference
+        point the pointer on the bigger LL forward by that diff
+        point where both head are equal..return that node
+        
+        */
+
+        int size1=getsize(headA);
+        int size2=getsize(headB);
+
+        int diff=Math.abs(size1-size2);
+
+        // whichever LL is bigger..shift it's head "difference" node ahead
+        if(size1>size2)
+        {
+            while(diff!=0)
+            {
+                headA=headA.next;diff--;
+            }
+        }
+        else
+        {
+            while(diff!=0)
+            {
+                headB=headB.next;diff--;
+            }
+        }
+
+        // just travelling that head equally..it same node found..return it
+        while(headA!=null)
+        {
+            if(headA==headB)
+            {
+                return headA;
+            }
+            else
+            {
+                headA=headA.next;
+                headB=headB.next;
+            }
+        }
+        return null;
+    }
+    public static int getsize(ListNode curr)
+    {
+        int c=0;
+        while(curr!=null)
+        {
+            c++;
+            curr=curr.next;
+        }
+        return c;
+    }
