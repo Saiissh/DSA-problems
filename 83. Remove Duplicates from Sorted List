@@ -1,0 +1,27 @@
+ if(head==null)return head;
+
+//prev pathi rahanar...and curr prev cha samor asnr
+         ListNode prev=head;
+         ListNode curr=head;
+
+        while(curr!=null)
+        {
+        // if Prev!=curr tarac... prev cha next la curr attach kara
+        //mnje inshort different value che nodes asle..tarac join kara
+                if(prev.val!=curr.val)
+                {
+        //hite different value node encounter zale...thus prev cha next la curr lavla
+        //and prev la samor kela...
+                    prev.next=curr;
+                    prev=prev.next;
+                    // System.out.print(prev.val+" ");
+
+                }
+        //curr la apan continous forward karat asnr
+                curr=curr.next;
+              
+        }
+        //he kela..cuz prev cha adhi pasun link asnr na..tr te break krna imp ahe..nhitr 
+        //3->3 he link as it is asnr...
+        prev.next=null;
+        return head;
