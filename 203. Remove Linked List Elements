@@ -1,0 +1,21 @@
+  if(head==null)return head;
+        if(head.val==val)head=head.next;
+        //zar first elemntac val aasel..tr head lac increment 
+
+        //here i used a another node which will help me to store the nodes
+        ListNode ans=new ListNode(0);
+        ListNode temp=ans;
+
+        while(head!=null)
+        {
+            if(head.val!=val)
+            {
+                ans.next=head;ans=ans.next;
+            }
+            head=head.next;
+        }
+
+  //he kela..cuz last la ans la mla null point krichai..(testcase 1 2 3 6 4 5 6 val= 6 is good example to understand this condition )
+        ans.next=null;
+        
+        return temp.next;
