@@ -1,0 +1,31 @@
+
+int start=1;//initially we save 1 in the start
+        int turn=0;//this pointer is used to mark the side by which we are deleting the elements
+        int diff=1;//initial difference between elements is 1
+        while(n!=1)//jabtak n is not 1(here n represents the number of elements that we have)
+        {
+            if(turn==0)//jabb mera turn even hoga..mtlb start se elements remove hoga
+            {
+                start=start+diff;//thus increment start elemnt by difference as initial start will get deleted
+                turn=1;  //mnje 1 cha 2 hoel..2 cha 4 etc
+              
+            }
+            else
+            {
+                if(n%2==0)
+                {
+                    start=start;//jabb number of elements mera even hoga..tabb end se aate samay...starting elemnts will not be removed 
+
+                }
+
+               else if(n%2==1)
+                {
+                    start=start+diff;
+//jab number of elemts mere odd honge..tabb mera starting element will get removed..thus shift my start by difference
+                }
+                turn=0;
+            }
+            diff*=2;//everytime mera diff *2 horra hai...1 2 3 4 5 6 {d=1}-> 2 4 6 {d=2}->2 6 {d=4} 
+            n=n/2;//..everytime by number of elemets half ho rhe hai
+        }
+        return start;
