@@ -1,0 +1,38 @@
+//same as leader of the array
+        ListNode head1=reverse(head);
+//reverse the LL first;
+
+        ListNode ans=new ListNode(0);
+        ListNode anspointer=ans;
+        
+        int v1=Integer.MIN_VALUE;
+        //start adding node.val> that previous one;
+        while(head1!=null)
+        {
+            if(head1.val>=v1 )
+            {
+                ans.next=head1;
+                ans=ans.next;
+                v1=head1.val;
+            }
+            head1=head1.next;
+
+        }
+        ans.next=null;
+        //this is done in order to remove unnecessary nodes from ans LL
+        return reverse(anspointer.next);
+        
+    }
+    public static ListNode reverse(ListNode curr)
+    {
+        ListNode prev=null;
+        while(curr!=null)
+        {
+            ListNode nextN=curr.next;
+
+            curr.next=prev;
+            prev=curr;
+            curr=nextN;
+        }
+        return prev;
+    }
