@@ -1,0 +1,25 @@
+        ListNode odd=new ListNode(0);//node to store odd based data
+        ListNode h1=odd;
+       
+        ListNode even=new ListNode(0);//node to store even based data
+         ListNode h2=even;
+
+        while(head!=null)
+        {
+            odd.next=head;//firstly odd wle mai insert kr diya
+            odd=odd.next;//odd ko increment kiya
+            head=head.next;//head ko increment kiya
+
+            if(head==null)break;//if aage kuch present hi nhi hai..to break krdo
+
+            even.next=head;//same logic goes here
+            even=even.next;
+            head=head.next;
+        }
+
+        odd.next=null;//to break any linkage if present
+        even.next=null;
+
+        odd.next=h2.next;//2no LL ko join kiya
+
+        return h1.next; 
