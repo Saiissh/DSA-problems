@@ -1,0 +1,20 @@
+
+ 
+        int col=mat[0].length-1;    //extreme left se start krdo
+        int row=0;                  //first row se start kela
+
+        while(col>=0 && row<mat.length)  //zoparent leftmost bottom hit karat nhi..toparent 
+        {
+            int num=mat[row][col];
+
+            if(num==t)              
+            return true;
+
+            else if(num<t)          //zar target bigger asel go down the matrix
+            row++;
+
+            else                    //zar targer smaller asel tr go left of row
+            col--;
+            
+        }
+        return false;
