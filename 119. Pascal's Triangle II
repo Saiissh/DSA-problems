@@ -1,0 +1,37 @@
+        //this is a zero based indexing..and we have to return 0th index ROW
+        if(r==0)
+        {
+            ArrayList<Integer> ll=new ArrayList<>();  
+                ll.add(1);
+                return ll;    
+        }
+
+        // create list of list  
+        List <List<Integer>> ll=new ArrayList<>();
+
+        for(int i=0;i<=r;i++)
+        {
+            ll.add(new ArrayList<>());
+            //in every list a list is created..this behave as a 2D array 
+        }
+
+        for(int i=0;i<=r;i++)
+        {
+            for(int j=0;j<=i;j++)
+            {
+                if(j==0 || j==i)
+    //if mera j is 0 or j=i..mtlb im in the leftmost/rightmost position..thus add 1 there
+    //placing edge elements
+                {
+                    ll.get(i).add(1);
+                }
+                else
+                {
+    //else vrchi row mdhe(i-1th row)...left wla(j-1) and upper(j)th element chi addition
+                    int num= ll.get(i-1).get(j-1) + ll.get(i-1).get(j);
+    // tyala lower row mdhe (ith row) j position vrti place kara
+                    ll.get(i).add(num);
+                }
+            }
+        }
+        return ll.get(r);
