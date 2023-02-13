@@ -1,0 +1,33 @@
+ /*
+      idea behind the code
+      1.use slow and fast pointer fast will move 2 nodes while slow 
+        will move one node
+      2.when they meet that is the meeting node thus start one pointer from head while
+        other start from meeting point;
+        (move both one node at a time)
+      3.The point where they again meet will be the linking node
+      4.Algo used is "CYCLE DETECTION"
+      */
+      
+        ListNode fp=head;
+        ListNode sp=head;
+        ListNode pointer=head;
+        while(fp!=null && fp.next!=null)
+        {
+
+            fp=fp.next.next;
+            sp=sp.next;
+            
+            if(fp==sp)break; //meetup point pe break
+        }
+    if(fp==null || fp.next==null)
+    return null;   //if fp reaches null no link present
+
+        fp=pointer;    
+
+        while(fp!=sp)
+        {
+            fp=fp.next;
+            sp=sp.next;
+        }
+        return sp;
