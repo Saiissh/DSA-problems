@@ -1,0 +1,42 @@
+Node fp=head;//fast pointer
+        Node sp=head;//slow pointer
+        
+        Node pointer=head;
+        
+        while(fp!=null && fp.next!=null)
+        {
+            fp=fp.next.next;
+            sp=sp.next;
+            
+            if(fp==sp)
+            break;
+        }
+        if(fp==null || fp.next==null)
+        return;    //iska mtlb fp null la pochla..ie no link present 
+        
+      fp=pointer;
+      
+      if(sp==fp)  
+     //jab mera meeting node and head both are same...keep one pointer
+     //   on meeting node and travel other one by one..and exact before reaching the 
+    //meeting node...do its next to null
+      {
+          sp=sp.next;
+          while(sp.next!=fp)
+          sp=sp.next;
+      }
+      
+      //jab meeting and head diff hai..mtlb same dist hoga from meeting node to linking node
+      //and head to linking node
+       else
+       {
+          while(fp.next!=sp.next)
+          {
+              fp=fp.next;
+              sp=sp.next;
+          }
+       }
+       
+       sp.next=null;
+        
+        
