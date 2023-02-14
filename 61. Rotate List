@@ -1,0 +1,47 @@
+ /*
+        similar to rotate the array
+        find length of array
+        find kth node from end
+        break the connection and rejoin the LL
+        */
+        ListNode temp=head;
+        int c=0;
+
+        while(temp!=null)
+        {
+            c++;temp=temp.next;
+        }
+
+        if(c<=1)
+        return head;
+
+        if(n>=c)
+        n=n%c;
+
+        // if(n==0) return head;
+
+        if(n==0)return head;
+        
+        ListNode start=head;
+
+		ListNode fp=head,sp=head;
+
+		while(fp.next!=null)
+			{
+				if(n!=0)
+				{
+					fp=fp.next;n--;
+				}
+				else
+				{
+					fp=fp.next;sp=sp.next;
+				}
+			}
+
+		ListNode nextHead=sp.next;
+		sp.next=null;
+
+		fp.next=head;
+		
+
+		return nextHead;
