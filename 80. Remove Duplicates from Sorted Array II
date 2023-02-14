@@ -1,0 +1,35 @@
+ /*
+        Basic idea :-
+
+        1.start pointer from 2 bcuz iske piche wla sequence we are not concerned
+
+        2.j will be used to point out current number while i is used to compare i-2th 
+        element with j;
+
+        3.if i-2 element == jth elemnt..mtlb pehele hi 2 elements aa chuke hai in array..           thus we need to swap this jth element with another element
+
+        4.if arr[i-2]!=arr[j] mtlb we can add this element into array..thus simply swap them
+        */    
+        int i=2,j=2;
+
+        while(j<arr.length)
+        {
+            if(arr[i-2]==arr[j])
+            {
+                j++; 
+            }
+            else if(arr[i-2]!=arr[j])
+            {
+                swap(arr,i,j);
+                i++;j++;
+            }
+        }
+        return i;
+        
+    }
+    public static void swap(int arr[],int i,int j)
+    {
+        int t=arr[i];
+        arr[i]=arr[j];
+        arr[j]=t;
+    }
