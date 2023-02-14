@@ -1,0 +1,37 @@
+
+Stack<Integer>st=new Stack<>();
+        int ans[]=new int[n];
+        //same approach like previous greater element
+        //stack will be storing "index" of previous greater element
+        for(int i=0;i<n;i++)
+        {
+            int curr=arr[i];
+            
+            while(st.size()>0 && arr[st.peek()]<=curr)
+            {
+                st.pop();
+            //jab tak top stack ke index ka element less than current..keep poping
+            }
+            if(st.size()==0)
+            {
+                ans[i]=-1; //jab stack is empty..no PGE exist..thus add -1
+            }
+            else
+            {
+                ans[i]=st.peek(); //greater element's index for ith element is stored in ans array
+            }
+            st.push(i);// also this ith element can be NGE for upcoming elements
+        }
+        
+        for(int i=0;i<n;i++)
+        {
+            if(ans[i]==-1)
+            {
+                ans[i]=i+1;  //this is done by taking help of example
+            }
+            else
+            {
+                ans[i]=i-ans[i];  //this is done by taking help of example
+            }
+        }
+        return ans;
