@@ -1,0 +1,26 @@
+ /*basic idea
+        2no pointers will be on 0 initially
+        jabb mera j ka value will be x..only increamnet j
+        jab !x hoga..tab swap krke..eik eik incremnet krdo
+        */
+        int i=0,j=0;
+        while(j<arr.length)
+       {
+           if(arr[j]==x)
+           j++; 
+
+           else
+           {
+               swap(arr,i,j);
+               i++;j++;
+           }
+       }
+       return i;
+
+        }
+      public static void swap(int arr[],int i,int j)
+        {
+            int t=arr[i];
+            arr[i]=arr[j];
+            arr[j]=t;
+        }
