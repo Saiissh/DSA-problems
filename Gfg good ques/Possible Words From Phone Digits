@@ -1,0 +1,30 @@
+static String key[]={"","abc","def","ghi","jkl","mno","pqrs","tuv","wxyz","*","","#"};
+    
+    static ArrayList <String> possibleWords(int a[], int N)
+    {
+        // your code here  
+        ArrayList<String>list=new ArrayList<>();
+        
+        recur(list,a,N,0,"");
+        return list;
+    }
+    static void recur(ArrayList<String>list,int arr[],int n,int curr,String ans)
+    {
+       //curr is used to specify which index is currently we are
+        if(n==curr)//means full array is travelled
+        {
+            list.add(ans);
+            return;
+        }
+        
+        String firstWord=key[arr[curr]-1];  
+        //-1 kela bcuz 4 no la jkl which is for 5 no is called
+        //it should use GHI so -1 is done
+        
+        for(int i=0;i<firstWord.length();i++)
+        {
+            char ch=firstWord.charAt(i);
+            
+            recur(list,arr,n,curr+1,ans+ch);
+        }
+    }
