@@ -1,0 +1,56 @@
+public void reorderList(ListNode head) {
+        if(head==null)return;
+
+        ListNode head1=head;
+
+        ListNode sp=head,fp=head;
+        while(fp.next!=null && fp.next.next!=null)
+        //termination step....see using pen and paper
+        {
+            sp=sp.next;fp=fp.next.next;
+        }
+
+        ListNode head2=sp.next;
+        sp.next=null;
+
+        head2=reverse(head2);  //reverse LL after mid(sp)
+
+        ListNode ans=new ListNode(0);
+        ListNode pointer=ans;
+
+        while(head1!=null && head2!=null)
+        {
+            ans.next=head1;head1=head1.next;ans=ans.next;
+            //add elements from each seperate LL 
+            ans.next=head2;head2=head2.next;ans=ans.next;
+        }
+        if(head2!=null)
+        ans.next=head2;
+
+        if(head1!=null)
+        ans.next=head1;
+
+        ppt(ans.next);
+    }
+
+    public static void ppt(ListNode nn)
+    {
+        while(nn!=null)
+        {
+            System.out.print(nn.val+" ");
+            nn=nn.next;
+        }
+    }
+    public static ListNode reverse(ListNode nn)
+    {
+        ListNode prev=null;
+        while(nn!=null)
+        {
+            ListNode nN=nn.next;
+            nn.next=prev;
+
+            prev=nn;
+            nn=nN;
+        }
+        return prev;
+    }
