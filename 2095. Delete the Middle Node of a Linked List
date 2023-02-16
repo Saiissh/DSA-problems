@@ -1,0 +1,12 @@
+if(head==null)return null;
+        if(head.next==null)return null;
+        ListNode pointer=head,prev=null,fp=head,sp=head;
+
+        while(fp!=null &&fp.next!=null)
+        {
+       prev=sp;  //this prev will point towards previous of sp..thus link breaking mai easy hoga
+            sp=sp.next;fp=fp.next.next;
+        }
+        
+        prev.next=sp.next;
+        return pointer;
