@@ -1,0 +1,22 @@
+ ArrayList<Integer>list=new ArrayList<>();
+        
+        Stack<Integer>st=new Stack<>();
+        
+        for(int i=0;i<n;i++)
+        {
+            int curr=arr[i];
+            
+            while(st.size()>0 && arr[st.peek()]>=curr)
+            {
+                st.pop(); //if upper elemet is larger..just pop the stack
+            }
+            
+            if(st.size()==0)
+                list.add(-1);
+            else
+                list.add(arr[st.peek()]);
+                
+            st.push(i);
+            
+        }
+        return list;
