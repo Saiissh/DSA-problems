@@ -1,0 +1,76 @@
+
+ // for n^2  just just two nested loops to check 
+        
+        //brute force
+        // for(int i=0;i<n;i++)
+        // {
+        //     boolean f1=false;boolean f2=false;
+        //     int celeb=i;
+            
+        //     for(int j=0;j<n;j++)
+        //     {
+        //         if(j!=celeb)     //check if celeb knows anyone
+        //         {
+        //             if(mat[celeb][j]==1)
+        //             {f1=true;break;}
+        //         }
+        //     }
+            
+        //     for(int j=0;j<n;j++)
+        //     {
+        //         if(j!=celeb)
+        //         {
+        //             if(mat[j][celeb]==0)   //check if everyone knows celeb
+        //             {f2=true;break;}
+        //         }
+        //     }
+            
+        //     if(f1==false && f2==false)  //both flags should be false thus && used
+        //     return celeb;
+        // }
+        // return -1;
+        
+        
+        //optimised using stacks
+    	Stack<Integer>st=new Stack<>();
+    	
+    	//stack mdhe 1 to n push krdo
+    	for(int i=0;i<n;i++)
+    	st.push(i);
+    	
+    	while(st.size()!=1)
+    	{
+    	    int person1=st.pop();
+    	    int person2=st.pop();
+    	    
+    	    if(mat[person1][person2]==1)//mjne prsn1 knowws prsn2..thus 1 is not celebrity
+    	    st.push(person2);
+    	    
+    	    else          //mtlb prsn 1 dont know prsn 2..so he might be celebrity
+    	    st.push(person1);
+    	}
+    	
+    	
+        int celeb=st.pop();  //expected celebrity
+
+    	for(int i=0;i<n;i++)
+    	{
+    	    if(i!=celeb)
+    	       {
+    	           if(mat[celeb][i]==1)  //check if celeb knows anyone or not
+    	            return -1;
+    	       }
+    	    
+    	}
+    	
+    	for(int i=0;i<n;i++)
+    	{
+    	    //to check if celeib is known by everyone
+    	    if(i!=celeb)
+    	        {
+    	            if(mat[i][celeb]==0)
+    	              return -1;
+    	        }
+    	}
+    	
+    	return celeb;
