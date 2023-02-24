@@ -1,0 +1,53 @@
+class MinStack {
+
+    Stack<Integer>st;
+    Stack<Integer>smallE;
+   
+    public MinStack() {
+        st=new Stack<>();
+        smallE=new Stack<>();
+    }
+    
+    public void push(int val) { 
+        if(smallE.empty())
+        smallE.push(val);   //jab smallE pehele empty ho tab to add krdo
+
+        else if(smallE.peek()>=val)
+        smallE.push(val);  //when smallE.peek>val...add val into smallE too
+
+        st.push(val);   //harr baar val wil be pushed to stack
+    }
+    
+    public void pop() {
+        
+
+        int sttop=st.pop();
+
+        if(smallE.peek()==sttop)  //jabb pop krte tym if smalleE vrti pn same ele asle pop it too
+        smallE.pop();
+        
+    }
+    
+    public int top() {
+        if(st.size()==0)
+        return -1;
+
+        return st.peek();
+    }
+    
+    public int getMin() {
+        if(st.empty())
+        return -1;
+
+        return smallE.peek();
+    }
+}
+
+/**
+ * Your MinStack object will be instantiated and called as such:
+ * MinStack obj = new MinStack();
+ * obj.push(val);
+ * obj.pop();
+ * int param_3 = obj.top();
+ * int param_4 = obj.getMin();
+ */
