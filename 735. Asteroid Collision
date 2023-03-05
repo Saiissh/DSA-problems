@@ -1,0 +1,59 @@
+class Solution {
+    public int[] asteroidCollision(int[] asteroids) {
+        
+        Stack<Integer>st=new Stack<>();
+
+        for(int i=0;i<asteroids.length;i++)
+        {
+            int curr=asteroids[i];
+
+            if(st.size()==0 || curr>0 || st.peek()<0 && curr<0)
+            st.push(curr);
+//direct add positive values and if st.size is 0 i.e no collision will occur thus add them too
+//and if peek person is negative along with curr..add curr 
+
+            else if(st.peek()>0 && curr<0)
+            {
+                curr=-curr;
+                boolean flag=true;
+
+                while(st.size()>0 && st.peek()>0)
+            //jab-tak mera stack is non empty and peek value >0 use while loop            
+                {
+
+                    if(st.peek()==curr) //i.e 2no destroyed ..thus remove peek
+                    {
+                        st.pop();
+                        flag=false;
+                        break;
+                    }
+
+                   else if(st.peek()>curr) //now this top will destroyed curr 
+                    {
+                        flag=false;
+                        break;
+                    }
+                     
+                    else{           //curr will destroy top
+                        st.pop();
+                    }
+                }
+
+                if(flag==true)
+                st.push(curr*(-1));
+//flag is still true mtlb no peek element has destroyed curr...thus add this asteriod also
+            }  
+        }
+
+
+        int ans[]=new int[st.size()];
+        int i=st.size()-1;
+        
+        while(st.size()!=0)
+        {
+            ans[i]=st.pop();
+            i--;
+        }
+        return ans;
+    }
+}
