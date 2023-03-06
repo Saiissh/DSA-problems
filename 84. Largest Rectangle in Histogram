@@ -1,0 +1,62 @@
+class Solution {
+    public int largestRectangleArea(int[] arr) {
+        int n=arr.length;
+
+        // if(n==1)
+        // return arr[0];
+
+        int pse[]=new int[n]; //will store prev smaller element index
+        int nse[]=new int[n]; //will store next smaller element index
+        Stack<Integer>st=new Stack<>();
+        
+        for(int i=0;i<n;i++)
+        {
+            int curr=arr[i];
+
+            while(st.size()>0 && arr[st.peek()]>=curr)
+            st.pop();
+
+            if(st.size()==0)
+            {
+                pse[i]=-1;
+            }
+
+            else{
+                pse[i]=st.peek();
+            }
+            st.push(i);
+        }
+
+        st=new Stack<>();
+        for(int i=n-1;i>=0;i--)
+        {
+            int curr=arr[i];
+
+            while(st.size()>0 && arr[st.peek()]>=curr)
+            st.pop();
+
+            if(st.size()==0)
+            {
+                nse[i]=n;
+            }
+
+            else{
+                nse[i]=st.peek();
+            }
+            st.push(i);
+        }
+// -----just calculated next smaller and previous smaller element
+       
+        int largest=0;
+        int curr=0;
+
+        for(int i=0;i<n;i++)
+        {
+            curr=(nse[i]-pse[i]-1)*arr[i];  //width*height=total area
+
+            largest=Math.max(curr,largest);
+        }
+
+        return largest;
+    }
+}
