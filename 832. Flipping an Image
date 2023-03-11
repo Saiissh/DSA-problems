@@ -1,0 +1,17 @@
+  int n=image.length;
+        int ans[][]=new int[n][n]; 
+
+        for(int i=0;i<n;i++)
+        {
+            for(int j=n-1;j>=0;j--)  //good step to avoid two loops
+            {
+              int digit=image[i][n-1-j];  
+
+              if(digit==1)digit=0;
+              else digit=1;
+
+              ans[i][j]=digit;
+            }
+        }
+
+        return ans;
