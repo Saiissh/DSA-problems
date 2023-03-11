@@ -1,0 +1,26 @@
+ int i=0,j=0,k=nums.length-1;
+
+        while(j<=k)
+        {
+            if(nums[j]==1)
+            j++;
+            // zar 1 asel tr j++
+            else if(nums[j]==0)
+            {
+                swap(nums,i,j);  //zar 0 ala tr swap i j 
+                i++;j++;
+            }
+            else{
+                swap(nums,j,k);
+                k--;//here only k-- n not j++ bcoz swap nntr konta 
+                // element ala ahe at place of j we dont know
+            }
+        }
+    }
+
+    public static void swap(int arr[],int i,int j)
+    {
+        int t=arr[i];
+        arr[i]=arr[j];
+        arr[j]=t;
+    }
