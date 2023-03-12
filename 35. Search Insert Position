@@ -1,0 +1,27 @@
+ int pos=arr.length;
+
+        if(target<arr[0])return 0;
+
+        if(target>arr[pos-1])return pos;
+        
+        int s=0,e=arr.length-1;
+
+        while(s<=e)
+        {
+            int midIdx=s+((e-s)/2);
+            int midEle=arr[midIdx];
+
+            if(target<midEle)
+            {
+                e=midIdx-1;
+            }
+            else if(target==midEle)
+                return midIdx;
+            
+            else
+            {
+                s=midIdx+1;
+                pos=s;
+            }
+        }
+        return pos;
