@@ -1,0 +1,20 @@
+int s=0,e=arr.length-1,ans=-1;
+
+        while(s<=e)
+        {
+            int midIdx=s+(e-s)/2;
+            int midEle=arr[midIdx];
+
+            if(midEle<arr[midIdx+1])
+            {
+//it means after mid i.e in right zone..i have greater elements than mid
+                s=midIdx+1;
+                ans=s;
+            }
+            else if(midEle>arr[midIdx+1])
+            {
+// it meanns i m in decreasing zone..thus now search into left part only
+                e=midIdx-1;
+            }
+        }
+        return ans;
