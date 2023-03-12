@@ -1,0 +1,20 @@
+char ans=arr[0];
+
+        int s=0,e=arr.length-1;
+
+        while(s<=e)
+        {
+             int mid=(e-s)/2 +s;
+             char midChar=arr[mid];
+
+             if(tar<midChar)
+             {
+                 ans=midChar;
+                 e=mid-1;
+             }
+             else 
+             {
+                 s=mid+1;
+             }
+        }
+        return ans;
