@@ -1,0 +1,22 @@
+  //brute force approach will be using 2 loops and then
+		//cal bigger no in right side of that element and storing the max diff
+
+
+		//optimised 
+
+		int curr=prices[0],profit=0,maxprofit=0;
+
+		for(int i=1;i<prices.length;i++)
+			{
+				if(curr>prices[i])
+					{
+						curr=prices[i];continue;
+					}
+
+				
+				profit=prices[i]-curr;
+				maxprofit=Math.max(maxprofit,profit);
+				
+			}
+
+		return maxprofit;
