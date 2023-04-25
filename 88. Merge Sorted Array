@@ -1,0 +1,29 @@
+ 
+ //optimised approach with oN and O(1) space ...here no need of creating a new array
+ //rather the arr1 is updated itself
+ 
+ 
+    let i=m-1;
+    let j=n-1;
+    let k=m+n-1;
+
+    while(k>=0 &&  j>=0)
+    {
+        if(i>=0 && arr1[i]>=arr2[j])
+        {
+         arr1[k]=arr1[i];
+         k--;i--;
+        }
+
+        else 
+        {
+           
+         arr1[k]=arr2[j];
+         k--;j--;
+            
+        }
+
+       
+    }
+
+    return arr1;
